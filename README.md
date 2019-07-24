@@ -98,7 +98,7 @@ issued message, and return the maximum final return code.
 | Pylint code | Message | Final return code |
 | ----------- | ------- | ----------------- |
 | 1  | Fatal message issued | 1 |
-| 2  | Error message issued | 0 |
+| 2  | Error message issued | 1 |
 | 4  | Warning message issued | 0 |
 | 8  | Refactor message issued | 0 |
 | 16 | Convention message issued | 0 |
