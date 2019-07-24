@@ -1,31 +1,21 @@
 #!/usr/bin/python
-import mister_bump
 from setuptools import setup
-from m2r import parse_from_file
-import restructuredtext_lint
+# read the contents of your README file
+from os import path
 
-
-# Parser README.md into reStructuredText format
-rst_readme = parse_from_file('README.md')
-
-# Validate the README, checking for errors
-errors = restructuredtext_lint.lint(rst_readme)
-
-# Raise an exception for any errors found
-if errors:
-    print(rst_readme)
-    raise ValueError('README.md contains errors: ',
-                     ', '.join([e.message for e in errors]))
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+   long_description = f.read()
 
 setup(
     name='pylint-exit',
     description='Exit code handler for pylint command line utility.',
-    long_description=rst_readme,
-    version=mister_bump.bump(style='rc'),
+    long_description=long_description,
+    version='1.0.1',
     author='Jon Grace-Cox',
     author_email='jongracecox@gmail.com',
     py_modules=['pylint_exit'],
-    setup_requires=['setuptools', 'wheel', 'm2r'],
+    setup_requires=['setuptools', 'wheel'],
     tests_require=[],
     install_requires=['bitarray'],
     data_files=[],
